@@ -5,23 +5,8 @@ const tripRoutes = express.Router();
 
 tripRoutes.get("/", async (req, res) => {
   try {
-    let query = {};
 
-    if (req.query.destination) {
-      query.destination = req.query.destination;
-    }
-
-    let sort = {};
-    if (req.query.sortBy) {
-      let first = req.query.sortBy.split(":");
-      sort[first[0]] =
-        first[1] === "desc"
-          ? -1
-          : first[1] === "asc"
-          ? 1
-          : "wright asc or desc only in url for sorting";
-    }
-    const trip = await TripModel.find(query).sort(sort);
+    const trip = await TripModel.find();
     res.send(trip);
   } catch (error) {
     res.send({ msg: "something wrong ", "error is": error.message });

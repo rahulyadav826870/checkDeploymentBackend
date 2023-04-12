@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const express = require("express");
 require("dotenv").config();
 const {connection} =require("./db/db");
